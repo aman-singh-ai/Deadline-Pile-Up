@@ -1,0 +1,97 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Fraunces", Georgia, serif;
+  --font-sans: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --color-paper: #f8f6f1;
+  --color-paper-deep: #f1eee6;
+  --color-card: #fffdf9;
+  --color-ink: #1b1815;
+  --color-ink-soft: #57514a;
+  --color-ink-mute: #8a837a;
+  --color-line: #e3ded2;
+  --color-line-soft: #ece8dd;
+
+  --color-alarm: #c2410c;
+  --color-alarm-deep: #9a3412;
+  --color-alarm-ink: #7c2d12;
+  --color-alarm-tint: #fff1e7;
+  --color-alarm-line: #f5cdb2;
+
+  --color-ok: #15803d;
+  --color-ok-tint: #eef7f0;
+  --color-ok-line: #c4e3cd;
+
+  --color-warn: #92400e;
+  --color-warn-tint: #fdf6e9;
+  --color-warn-line: #ecd9ac;
+
+  --shadow-card: 0 1px 2px rgb(27 24 21 / 0.05), 0 12px 32px -16px rgb(27 24 21 / 0.18);
+  --shadow-pop: 0 24px 64px -24px rgb(27 24 21 / 0.35);
+
+  --animate-pulse-soft: pulseSoft 2.4s ease-in-out infinite;
+
+  @keyframes pulseSoft {
+    0%, 100% { box-shadow: 0 0 0 0 rgb(194 65 12 / 0.22); }
+    50% { box-shadow: 0 0 0 10px rgb(194 65 12 / 0); }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-paper text-ink font-sans antialiased;
+  background-image:
+    radial-gradient(rgb(27 24 21 / 0.035) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+::selection {
+  background: #1b1815;
+  color: #f8f6f1;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #cfc8b8 transparent;
+}
+
+input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  opacity: 0.55;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+@keyframes riseIn {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.rise {
+  animation: riseIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes marqueeStripe {
+  from { background-position: 0 0; }
+  to { background-position: 56px 0; }
+}
+
+.hazard-band {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    rgb(194 65 12 / 0.9) 0 14px,
+    rgb(154 52 18 / 0.9) 14px 28px
+  );
+  animation: marqueeStripe 1.6s linear infinite;
+}
